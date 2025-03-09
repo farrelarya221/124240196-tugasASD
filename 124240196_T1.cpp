@@ -143,7 +143,6 @@ int main()
     int jumlahFilm, pilihan;
     string cariKode, cariJudul;
     Film *daftarFilm = inisialisasiFilm(&jumlahFilm);
-    // Membuat salinan data asli untuk menu tampilan data sebelum diurutkan
     Film *daftarFilmAsli = new Film[jumlahFilm];
     for (int i = 0; i < jumlahFilm; i++)
     {
@@ -159,7 +158,7 @@ int main()
         cout << "3. Cari Film berdasarkan Judul\n";
         cout << "4. Urutkan Film berdasarkan Rating (Ascending)\n";
         cout << "5. Urutkan Film berdasarkan Rating (Descending)\n";
-        cout << "6. Tampilkan Data Film Asli (Sebelum Diurutkan)\n"; // Menu baru
+        cout << "6. Tampilkan Data Film Asli (Sebelum Diurutkan)\n"; 
         cout << "0. Keluar\n";
         cout << "Pilihan: ";
         cin >> pilihan;
@@ -174,6 +173,7 @@ int main()
             break;
         case 2:
             system("cls");
+            sortJudul(daftarFilm, jumlahFilm);
             cout << "\nMasukkan Kode Film: ";
             cin.ignore();
             getline(cin, cariKode);
@@ -181,7 +181,8 @@ int main()
             hasilPencarian = sequentialSearch(daftarFilm, jumlahFilm, cariKode);
             if (hasilPencarian != -1)
             {
-                cout << "\nFilm ditemukan: " << daftarFilm[hasilPencarian].judul << endl;
+                cout << "\nFilm ditemukan: " << daftarFilm[hasilPencarian].judul << " (Kode: " << daftarFilm[hasilPencarian].kode << ", Rating: " << daftarFilm[hasilPencarian].rating << ")\n" << endl;
+
             }
             else
             {
@@ -237,7 +238,7 @@ int main()
             
         case 0:
             system("cls");
-            cout << "\nTerima kasih telah menggunakan Sistem Manajemen Data Bioskop Plaza Ambarukmo\n";
+            cout << "\nTerima kasih telah menggunakan Sistem Manajemen Data Bioskop P\n";
             cout << "\nTekan Enter untuk keluar...";
             system ("pause");
             break;
